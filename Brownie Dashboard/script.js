@@ -242,10 +242,9 @@ function confirmAction(user) {
     if (isNaN(amount)) {
         amount = 1; // default to 1 when user doesn't enter a value
     }
-    const currentPoints = user === 1 ? points1 : points2;
 
     if (!action) {
-        setPointEntryMode(user, true, 'redeem');
+        alert('No action selected');
         return;
     }
 
@@ -272,20 +271,20 @@ function confirmAction(user) {
         return;
     }
 
-    const description = descInput.value.trim();
-    // Allow negative points for redeem as well
+    if (action === 'redeem') {
+        const description = descInput.value.trim();
+        if (!description) {
+            alert('Please enter a reason.');
+            return;
+        }
 
-    if (!description) {
-        alert('Please enter a reason.');
-        return;
+        addTransaction(user, 'Redeem', -amount, description)
+            .then(() => {
+                alert(`Redeemed ${amount} points for: ${description}`);
+                setPointEntryMode(user, false);
+            })
+            .catch((error) => {
+                console.error('Redeem failed:', error);
+            });
     }
-
-    addTransaction(user, 'Redeem', -amount, description)
-        .then(() => {
-            alert(`Redeemed ${amount} points for: ${description}`);
-            setPointEntryMode(user, false);
-        })
-        .catch((error) => {
-            console.error('Redeem failed:', error);
-        });
 }
