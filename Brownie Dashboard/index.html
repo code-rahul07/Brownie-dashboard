@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brownie Points Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Brownie Points Dashboard</h1>
+    <div class="dashboard">
+        <div class="user" id="user1">
+            <h2>Rahul</h2>
+            <p>Points: <span id="points1">0</span></p>
+            <button class="add-btn" onclick="addPoints(1)">Add</button>
+            <button class="subtract-btn" onclick="subtractPoints(1)">Subtract</button>
+            <button class="activity-btn" onclick="addGymPoints(1)">Gym</button>
+            <div class="redeem">
+                <label for="redeemPoints1">Points:</label>
+                <input type="number" id="redeemPoints1" min="1">
+                <label for="redeemDesc1">Reason:</label>
+                <input type="text" id="redeemDesc1">
+                <div class="redeem-buttons">
+                    <button onclick="confirmAction(1)">Redeem</button>
+                    <button class="back-btn" onclick="cancelPointAction(1)" style="display:none;">Back</button>
+                </div>
+            </div>
+        </div>
+        <div class="user" id="user2">
+            <h2>Pavani</h2>
+            <p>Points: <span id="points2">0</span></p>
+            <button class="add-btn" onclick="addPoints(2)">Add</button>
+            <button class="subtract-btn" onclick="subtractPoints(2)">Subtract</button>
+            <button class="activity-btn" onclick="addGymPoints(2)">Gym</button>
+            <div class="redeem">
+                <label for="redeemPoints2">Points:</label>
+                <input type="number" id="redeemPoints2" min="1">
+                <label for="redeemDesc2">Reason:</label>
+                <input type="text" id="redeemDesc2">
+                <div class="redeem-buttons">
+                    <button onclick="confirmAction(2)">Redeem</button>
+                    <button class="back-btn" onclick="cancelPointAction(2)" style="display:none;">Back</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="history-section">
+        <h2>Transaction History</h2>
+        <div class="history-container" id="historyContainer">
+            <p>No transactions yet</p>
+        </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
